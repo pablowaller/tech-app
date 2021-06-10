@@ -12,7 +12,6 @@ const CartWidget = () => {
             </Badge>
         </IconButton>
         </>
-
     );
 }
  

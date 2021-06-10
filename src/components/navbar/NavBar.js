@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography'
 const StyleToolbar = {
     display: "flex",
     flexDirection: "row",
-    width:"100%",
     justifyContent: "space-evenly", 
 };
 
