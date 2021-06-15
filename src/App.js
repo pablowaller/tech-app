@@ -14,7 +14,7 @@ const App = props => {
     <>
       <NavBar />
       <div style={StyleItemList}>
-      <ItemListContainer greeting="Trabajando en la WebPage"/>
+      <ItemListContainer container greeting="Productos Destacados"/>
       </div>
     </>
   );
