@@ -9,7 +9,6 @@ import ItemDetail from "./ItemDetail/ItemDetail"
 const myPromiseDetalles = () => {
     return new Promise ((resolve, reject) => {
         setTimeout(() => resolve (
-            [
             {
                 id: 1, 
                 title:'Xiaomi Airdots 2', 
@@ -25,7 +24,7 @@ const myPromiseDetalles = () => {
                 tiempoCarga: "aprox. 2 horas",
                 compatibilidad: "Pc, teléfono móvil",
                 conectividad: "Wireless",
-            }]
+            }
         ), 2000)
     })
 }
@@ -48,11 +47,8 @@ const ItemDetailContainer = props => {
 
     return (  
         <>
-            {
-            detalleArt.map((detalle) => <ItemDetail detalleArt={detalle}/> )
-            }
-            
-            {/* <ItemDetail detalleArt={detalleArt}/> */}
+         
+            <ItemDetail detalleArt={detalleArt}/>
         </>
     );
 }
