@@ -8,13 +8,13 @@ import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import ItemCount from "../ItemCount/ItemCount"
 
-
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+    maxWidth: 280,
     margin: "1em",
-    border: "solid lightblue"
-  }, 
+    border: "solid lightblue",
+  },
   title: {
     fontSize: 12,
   }
@@ -28,38 +28,39 @@ const StyleDisponible = {
 }
 
 const StyleImagen = {
-  maxWidth: "100%"
+  width: "100%"
 };
 
-const Item = (props) => {
-  const { id, title, description, price, pictureUrl, stock } = props;
+const Item = props => {
   const classes = useStyles();
+  const { element } = props;
 
   return (
+    <>
     <Card spacing={8} className={classes.root}>
       <CardActionArea>
-        <CardMedia component="img" style={StyleImagen} image={pictureUrl}/>
+        <CardMedia component="img" style={StyleImagen} image={element.pictureURL}/>
         <CardContent>
-          <Typography gutterBottom variant="h6">
-            {title}
+          <Typography gutterBottom variant="h6">{element.title}
           </Typography>
           <Typography gutterBottom component="p">
-            {description}
+            {element.description}
           </Typography>
           <Typography component="p" hidden>
-            {id}
+            {element.id}
           </Typography>
           <Typography color="secondary" component="p">
-            ${price}
+            ${element.price}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-      <ItemCount stock={stock} initial={1}/>
+      <ItemCount stock={element.stock} initial={1}/>
       </CardActions>
-      <h5 style={StyleDisponible}>{stock} unidades disponibles</h5>
+      <h5 style={StyleDisponible}>{element.stock} unidades disponibles</h5>
 
     </Card>
+    </>
   );
 };
 
