@@ -1,54 +1,36 @@
 import React, {useState} from 'react';
-import { AppBar, Toolbar, Tab, Tabs, Button} from '@material-ui/core';
+import { AppBar, Toolbar, Button} from '@material-ui/core';
 import logo3 from './logo3.png'
 import CartWidget from './CartWidget'
+import { makeStyles } from '@material-ui/core/styles'
+import {NavBarStyle} from "./NavBarStyle"
+import { Link } from "react-router-dom";
 
 
-const StyleAppBar = {
-    background: 'linear-gradient(to bottom left, #ADE06D, #6DADE0)',
-    color: "black",
-    fontWeight: "bolder",
-};
-
-const StyleContacto = {
-    right: "1.5em"
-
-}
-
-const carritoButton = {
-        margin: 'auto',
-        '&:hover':{
-            background: 'blue'
-        },
-    };
-
-    const styleTab = {
-        margin: 'auto',
-        '&:hover':{
-            background: 'blue'
-        },
-    };
+const useStyle = makeStyles((theme) => NavBarStyle(theme));
 
 const NavBar = () => {
+    const computacion = "computacion";
+    const accesorios = "accesorios";
+
+    const classes = useStyle()
     const [value, setValue] = useState(0);
     const handleClickTab = (e, newValue) => {
         setValue(newValue);
     } 
     return (
         <>
-            <AppBar style={StyleAppBar} position="static">
+            <AppBar className={classes.StyleAppBar} position="static">
                 <Toolbar>
-                  <div>
-                    <img src={logo3} alt="Mantenimiento"></img>
-                  </div>
-                        <Tabs style={styleTab} onChange={handleClickTab} indicatorColor='primary' value={value}>
-                            <Tab disableRipple label='Inicio'/>
-                            <Tab disableRipple label='Hardware'/>
-                            <Tab disableRipple label='Software'/>
-                        </Tabs>
-
-                        <Button style={StyleContacto} color="primary" variant="outlined" disableRipple label='Contacto'>Contacto</Button>
-                        <CartWidget style={carritoButton}/>  
+                  <Link to="/">
+                  <img src={logo3} alt="Logo de la tienda virtual"></img>
+                  </Link>
+                        <div className={classes.styleTab} onChange={handleClickTab} indicatorColor='primary' value={value}>    
+                            <Link to={`/category/${computacion}`} className={classes.styleLink}><Button className={classes.styleButton}>Computacion</Button></Link>
+                            <Link to={`/category/${accesorios}`} className={classes.styleLink}><Button className={classes.styleButton}>Accesorios</Button></Link>
+                        </div>
+                        <Button className={classes.StyleContacto} color="primary" variant="outlined" disableRipple label='Contacto'>Contacto</Button>
+                        <CartWidget className={classes.carritoButton}/>  
                 </Toolbar>
             </AppBar>
         </>

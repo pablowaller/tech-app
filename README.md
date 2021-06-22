@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+La página tiene una navegación simple, ni bien ingresar nos encontramos con 4 cards de productos que a su vez estan divididos en dos categorias, Computación y Accesorios.
+
+En la parte superior nos encontramos la barra de Navegación que cuenta con el Logo de la página, el cual a su vez es el Link para volver a la página principal, dos botones en el medio, que son para filtrar los articulos por categoria como mencioné antes y finalmente a la derecha de la barra de navegación encontramos un botón de Contacto y de Carrito que aún están inhabilitados.
+
+Al clickear en las imagenes podemos ver la vista extendida en la que encontramos una descripcion mas elaborada y otros apartados de interés del usuario.
+
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,4 +73,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->

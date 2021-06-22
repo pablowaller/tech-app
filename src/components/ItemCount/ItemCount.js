@@ -3,35 +3,13 @@ import Button from "@material-ui/core/Button";
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
+import { makeStyles } from '@material-ui/core/styles'
+import { ItemCountStyle } from "./ItemCountStyle";
 
-const StyleMasMenos = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  padding: "0.1em",
-  marginBottom: "1em",
-  width: "0,2em",
-  marginLeft: "2em"
-  
-};
-
-const Contador = {
-  textAlign: "center",
-  fontSize: "1em",
-  width: "1em"
-};
-
-const AgregarB = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  fontSize: "0.7em",
-  width:"1em",
-  height:"2.5em",
-  top:"1em"
-};
+const useStyle = makeStyles((theme) => ItemCountStyle(theme));
 
 const ItemCount = (props) => {
+  const classes = useStyle()
   const { stock, initial } = props;
   const [contar, setCount] = useState(initial);
   const [buttonContar, setButtonContar] = useState(false);
@@ -58,18 +36,16 @@ const ItemCount = (props) => {
   };
 
   return (
-    <>
-      {/* <h1 style={Contador}>Contador</h1> */}
-      
-      <div style={StyleMasMenos}>
+    <> 
+      <div className={classes.StyleMasMenos}>
         <IconButton aria-label="mas" color="primary" variant="outlined" onClick={(e) => addItem()}>
           <AddIcon/>
         </IconButton>
-        <h2 style={Contador}>{contar}</h2>
+        <h2 className={classes.Contador}>{contar}</h2>
         <IconButton aria-label="menos" color="primary" variant="outlined" onClick={(e) => removeItem()}>
           <RemoveIcon/>
         </IconButton>
-        <Button style={AgregarB} color="primary" variant="contained" disabled={buttonContar} onClick={(e) => (contar === 0 ? undefined : onAdd())}>
+        <Button className={classes.AgregarB} color="primary" variant="contained" disabled={buttonContar} onClick={(e) => (contar === 0 ? undefined : onAdd())}>
           Carrito
         </Button>
       </div>

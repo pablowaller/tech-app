@@ -1,25 +1,26 @@
 import NavBar from "./components/navbar/NavBar";
 import "./App.css";
-import ItemListContainer from "./components/itemListContainer/ItemListContainer";
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-
-
-
-const StyleItemList = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-};
+import ItemListContainer from "./screens/itemListContainer/ItemListContainer";
+import ItemDetailContainer from "./screens/ItemDetailContainer/ItemDetailContainer";
+// import NotFound from './components/NotFound/NotFound';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 const App = props => {
   return (
-    <>
-      <NavBar />
-      <div style={StyleItemList}>
-      <ItemListContainer/>
-      <ItemDetailContainer/>
-      </div>
-    </>
+    <BrowserRouter >
+      <NavBar/>
+        <Switch>
+        <Route exact path="/">
+            <ItemListContainer />
+        </Route>
+        <Route path="/category/:category">
+            <ItemListContainer/>
+        </Route>
+        <Route exact path='/item/:id'>
+            <ItemDetailContainer />
+        </Route>
+        </Switch>
+    </BrowserRouter>
   );
 }
 
