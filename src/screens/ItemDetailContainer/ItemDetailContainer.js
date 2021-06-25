@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     myPromiseDetalles.then((data) => {
-      const filtrarData = data.filter((element) => element.id === parseInt(id));
+      const filtrarData = data.filter((element) => element.id === id);
       setDetalleArt(filtrarData);
     });
   }, [id]);
@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
     <>
       {detalleArt.length === 0 ? (
         <div>
-          <CircularProgress size="8rem" color="green" />
+          <CircularProgress size="8rem" color="primary" />
         </div>
       ) : (
         detalleArt.map((detalleArt, i) => {

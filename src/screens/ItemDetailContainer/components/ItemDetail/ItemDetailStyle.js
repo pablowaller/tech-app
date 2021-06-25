@@ -27,6 +27,11 @@ export const ItemDetailStyle = theme => {
           titulo: {
             marginBottom: "0.5em",
           },
+          ButtonDetailStyle :{
+            width:"8em",
+            height:"3em",
+            fontSize: "0.7em",          
+          },
           precioDetalle: {
             marginTop: "0.5em",
             marginBottom: "0.5em",

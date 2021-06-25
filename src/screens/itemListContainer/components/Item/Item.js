@@ -7,12 +7,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
-import ItemCount from "../../../../components/ItemCount/ItemCount";
-import { Link } from 'react-router-dom';
+// import ItemCount from "../../../../components/ItemCount/ItemCount";
+import { Link, useHistory } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 const useStyle = makeStyles((theme) => ItemStyle(theme));
 
 const Item = props => {
+  const history = useHistory();
   const classes = useStyle();
   const { element } = props;
 
@@ -34,9 +36,9 @@ const Item = props => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-      <ItemCount stock={element.stock} initial={1}/>
+      <Button onClick={() => history.push('/item/:id')} variant="contained" color="primary" className={classes.ButtonItemStyle} > Agregar al carrito </Button>
       </CardActions>
-      <h5 className={classes.StyleDisponible}>{element.stock} unidades disponibles</h5>
+      <h5 className={classes.StyleDisponible}>{`${element.stock} unidades en Stock`}</h5>
     </Card>
     </Link>
     </>

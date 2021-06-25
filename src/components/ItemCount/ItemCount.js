@@ -8,12 +8,11 @@ import { ItemCountStyle } from "./ItemCountStyle";
 
 const useStyle = makeStyles((theme) => ItemCountStyle(theme));
 
-const ItemCount = (props) => {
+const ItemCount = ({ stock, initial, cantidad, addArticle }) => {
   const classes = useStyle()
-  const { stock, initial } = props;
-  const [contar, setCount] = useState(initial);
-  const [buttonContar, setButtonContar] = useState(false);
-
+  const [ contar, setCount ] = useState(initial > cantidad ? initial : cantidad);
+  const [ buttonContar, setButtonContar ] = useState(false);
+  
   const addItem = () => {
     if (contar !== stock) {
       setCount(contar + 1);
@@ -30,10 +29,7 @@ const ItemCount = (props) => {
     }
   };
 
-  const onAdd = (e) => {
-    if (contar > 0 && contar <= stock) {
-    }
-  };
+  console.log('contar ' + contar)
 
   return (
     <> 
@@ -45,9 +41,7 @@ const ItemCount = (props) => {
         <IconButton aria-label="menos" color="primary" variant="outlined" onClick={(e) => removeItem()}>
           <RemoveIcon/>
         </IconButton>
-        <Button className={classes.AgregarB} color="primary" variant="contained" disabled={buttonContar} onClick={(e) => (contar === 0 ? undefined : onAdd())}>
-          Carrito
-        </Button>
+        <Button className={classes.AgregarB} color="primary" variant="contained" disabled={buttonContar} onClick={() => addArticle(contar)}>Comprar</Button>
       </div>
     </>
   );
