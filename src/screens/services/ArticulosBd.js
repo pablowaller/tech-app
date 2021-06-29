@@ -1,7 +1,7 @@
 export const ArticulosBd = [
 
                 {id:"1", 
-                title:'Xiaomi Airdots 2', 
+                title:"Xiaomi Airdots 2", 
                 description: "Auriculares inalámbricos ",
                 descriptionLong: "Los auriculares bluetooth Xiaomi hacen que la música sea aún más agradable. A prueba de sudor y salpicaduras te permite disfrutar de actividades al aire libre. Este auricular cuenta con un diseño ultra elegante, mano de obra exquisita, ligero y portátil, fácil de llevar. La estructura dinámica de unidades de doble bobina te ofrecerá un sonido cristalino. • Compatibilidad con iOS y Android • Soporte para códec SBC • Resistencia al agua IPX5 • Cancelación de ruido",
                 price: 2599, 

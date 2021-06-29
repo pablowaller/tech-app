@@ -25,11 +25,11 @@ const NavBar = () => {
                   <Link to="/">
                   <img src={logo3} alt="Logo de la tienda virtual"></img>
                   </Link>
-                        <div className={classes.styleTab} onChange={handleClickTab} indicatorColor='primary' value={value}>    
+                        <div className={classes.styleTab} onChange={handleClickTab}  value={value}>    
                             <Link to={`/category/${computacion}`} className={classes.styleLink}><Button className={classes.styleButton}>Computacion</Button></Link>
                             <Link to={`/category/${accesorios}`} className={classes.styleLink}><Button className={classes.styleButton}>Accesorios</Button></Link>
                         </div>
-                        <Button className={classes.StyleContacto} color="primary" variant="outlined" disableRipple label='Contacto'>Contacto</Button>
+                        <Button className={classes.StyleContacto} color="primary" variant="outlined" disableRipple label="Contacto">Contacto</Button>
                         <CartWidget className={classes.carritoButton}/>  
                 </Toolbar>
             </AppBar>

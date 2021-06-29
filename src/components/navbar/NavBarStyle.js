@@ -1,7 +1,7 @@
 export const NavBarStyle = theme => {
     return({
         StyleAppBar : {
-            background: 'linear-gradient(to bottom left, #ADE06D, #6DADE0)',
+            background: "linear-gradient(to bottom left, #ADE06D, #6DADE0)",
             color: "black",
             fontWeight: "bolder",
         },
@@ -10,19 +10,19 @@ export const NavBarStyle = theme => {
 
         },
         carritoButton : {
-            margin: 'auto',
-            '&:hover':{
-                background: 'blue'
+            margin: "auto",
+            "&:hover":{
+                background: "blue"
             },
         },
         styleTab : {
-            margin: 'auto',
+            margin: "auto",
  
         },
         styleButton : {
-            margin: 'auto',
-            '&:hover':{
-                background: 'green'
+            margin: "auto",
+            "&:hover":{
+                background: "green"
             }
         },
         styleLink : {

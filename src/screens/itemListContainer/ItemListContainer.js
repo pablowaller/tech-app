@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react'
-import { ArticulosBd } from '../services/ArticulosBd'
+import React, {useState, useEffect } from "react"
+import { ArticulosBd } from "../services/ArticulosBd"
 import ItemList from "../itemListContainer/components/ItemList/ItemList"
-import { useParams} from 'react-router-dom'
+import { useParams} from "react-router-dom"
+
 
 const myPromise = new Promise((resolve, reject) => {
     setTimeout(() => resolve(ArticulosBd),2000)
@@ -11,6 +12,7 @@ const ItemListContainer = props => {
 
     const {category} = useParams();
     const [articulos, setArticulos] = useState([]);
+    
 
     useEffect(() => {
         myPromise.then(data => { setArticulos(data) })

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ItemDetailStyle } from "./ItemDetailStyle";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -9,6 +9,7 @@ import ItemCount from "../../../../components/ItemCount/ItemCount";
 import CardActions from "@material-ui/core/CardActions";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
+import { CartContext } from "../../../../context/CartContext";
 
 const useStyle = makeStyles((theme) => ItemDetailStyle(theme));
 
@@ -19,9 +20,23 @@ const ItemDetail = (props) => {
   const [cantidad, setCantidad] = useState(0)
   const [click, setClick] = useState(false)
 
-  console.log('cantidad ' + cantidad)
+  const { addItems, removeItems, clear} = useContext(CartContext);
 
-  const addArticle = value => { setCantidad (value); setClick(true); }
+  const onAdd = cantidad => {
+    setCantidad(cantidad);
+    setClick(true);
+    addItems({ item: element, quantity: cantidad });
+  };
+
+  const removeItem = () => {
+    setClick(!click);
+    removeItems(element.id);
+}
+
+  const cancelButton = () => {
+    setClick(!click);
+    clear();
+  }
   
   return (
     <>
@@ -56,11 +71,12 @@ const ItemDetail = (props) => {
             <CardActions>
             {click ? (
                       <div >
-                        <Button className={classes.ButtonDetailStyle} onClick={() => history.push(`/cart?cantidad=${cantidad}`)} variant="contained" color="primary"> Finalizar Compra </Button>
-                        <Button className={classes.ButtonDetailStyle} onClick={() => setClick(!click)} variant="contained" color="secondary"> Cancelar Compra </Button>
+                        <Button className={classes.ButtonDetailStyle} onClick={() => history.push(`/cart`)} variant="contained" color="primary"> Finalizar Compra </Button>
+                        <Button className={classes.ButtonDetailStyle} onClick={() => removeItem()} variant="contained" color="default"> Remover Item </Button>
+                        <Button className={classes.ButtonDetailStyle} onClick={() => cancelButton()} variant="contained" color="secondary"> Cancelar Compra </Button>
                       </div>
                     ) : (
-                <ItemCount stock={element.stock} initial={element.initial} cantidad={cantidad} addArticle={addArticle} />
+                <ItemCount stock={element.stock} initial={element.initial} cantidad={cantidad} addArticle={onAdd} />
               )}
               <h5 className={classes.StyleDisponible}>
                 {`${element.stock} unidades en Stock`}

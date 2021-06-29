@@ -4,6 +4,17 @@ import { Button } from '@material-ui/core';
 
 const Cart = () => {
 
+    // const [agregados, setAgregados] = useContext(CartContext);
+
+// return (
+//         <div>
+//             <span>Items en el carrito : 0</span>
+//             <br />
+//             <span>Precio total : 0</span>
+//         </div>
+//         )
+    
+
     const alCarrito = useHistory();
 
     return <>

@@ -9,10 +9,10 @@ import { ItemCountStyle } from "./ItemCountStyle";
 const useStyle = makeStyles((theme) => ItemCountStyle(theme));
 
 const ItemCount = ({ stock, initial, cantidad, addArticle }) => {
-  const classes = useStyle()
+  const classes = useStyle();
   const [ contar, setCount ] = useState(initial > cantidad ? initial : cantidad);
   const [ buttonContar, setButtonContar ] = useState(false);
-  
+ 
   const addItem = () => {
     if (contar !== stock) {
       setCount(contar + 1);
@@ -29,7 +29,7 @@ const ItemCount = ({ stock, initial, cantidad, addArticle }) => {
     }
   };
 
-  console.log('contar ' + contar)
+  // console.log('contar ' + contar)
 
   return (
     <> 

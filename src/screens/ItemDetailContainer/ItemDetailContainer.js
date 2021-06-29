@@ -11,6 +11,7 @@ const myPromiseDetalles = new Promise((resolve, reject) => {
 const ItemDetailContainer = () => {
   const [detalleArt, setDetalleArt] = useState([]);
   const { id } = useParams();
+  
 
   useEffect(() => {
     myPromiseDetalles.then((data) => {
@@ -30,6 +31,7 @@ const ItemDetailContainer = () => {
           return (
             <section key={i}>
               <ItemDetail element={detalleArt} />
+         
             </section>
           );
         })
