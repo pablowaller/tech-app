@@ -5,13 +5,15 @@ import CartWidget from './CartWidget'
 import { makeStyles } from '@material-ui/core/styles'
 import {NavBarStyle} from "./NavBarStyle"
 import { Link } from "react-router-dom";
-
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 const useStyle = makeStyles((theme) => NavBarStyle(theme));
 
 const NavBar = () => {
     const computacion = "computacion";
     const accesorios = "accesorios";
+    const { items} = useContext(CartContext);
 
     const classes = useStyle()
     const [value, setValue] = useState(0);
@@ -30,7 +32,7 @@ const NavBar = () => {
                             <Link to={`/category/${accesorios}`} className={classes.styleLink}><Button className={classes.styleButton}>Accesorios</Button></Link>
                         </div>
                         <Button className={classes.StyleContacto} color="primary" variant="outlined" disableRipple label="Contacto">Contacto</Button>
-                        <CartWidget className={classes.carritoButton}/>  
+                        {items.length === 0 ? <div></div> : <CartWidget className={classes.carritoButton}/>} 
                 </Toolbar>
             </AppBar>
         </>
