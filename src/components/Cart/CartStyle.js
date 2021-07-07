@@ -15,5 +15,20 @@ export const CartStyle = theme => {
             display: "flex",
             justifyContent: "center",         
         },
+        subtotalStyle: {
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+
+            // justifyContent: "center",
+
+        },
+        CarritoVacioStyle: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            marginTop: "5em",          
+ 
+        }
     });
 }

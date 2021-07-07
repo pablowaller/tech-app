@@ -5,6 +5,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles'
 import { ItemCountStyle } from "./ItemCountStyle";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 const useStyle = makeStyles((theme) => ItemCountStyle(theme));
 
@@ -41,7 +42,7 @@ const ItemCount = ({ stock, initial, cantidad, addArticle }) => {
         <IconButton aria-label="menos" color="primary" variant="outlined" onClick={(e) => removeItem()}>
           <RemoveIcon/>
         </IconButton>
-        <Button className={classes.AgregarB} color="primary" variant="contained" disabled={buttonContar} onClick={() => addArticle(contar)}>Comprar</Button>
+        <Button className={classes.AgregarB} color="primary" variant="contained" disabled={buttonContar} onClick={() => addArticle(contar)}><ShoppingCartIcon/></Button>
       </div>
     </>
   );

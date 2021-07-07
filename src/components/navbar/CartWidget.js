@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 const CartWidget = () => {
-    const { itemsQty, subtotal } = useContext(CartContext);
+    const { itemsQty } = useContext(CartContext);
 
     return (  
         <>
@@ -18,11 +18,6 @@ const CartWidget = () => {
                 </Badge>
             </IconButton>
         </Link>
-        <span>
-                <bdi>
-                    <span>$</span>{subtotal}
-                </bdi>
-            </span>
         </>
     );
 }
