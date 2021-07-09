@@ -6,6 +6,7 @@ import ItemDetailContainer from "./screens/ItemDetailContainer/ItemDetailContain
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Cart } from "./components/Cart/Cart";
 import {CartComponentContext } from "./context/CartContext";
+import { Order } from "./components/Cart/Order";
 
 const App = props => {
   return (
@@ -24,6 +25,9 @@ const App = props => {
           </Route>
           <Route exact path="/Cart">
               <Cart />
+          </Route>
+          <Route exact path="/Order">
+              <Order />
           </Route>
           </Switch>
       </BrowserRouter>

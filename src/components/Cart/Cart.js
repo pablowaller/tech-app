@@ -13,6 +13,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { Link } from "react-router-dom";
 
 const Impuesto = 0.21;
 
@@ -39,7 +40,7 @@ const CarritoTotal = ({ subtotal }) => {
                     <TableCell align="right" colSpan={7}><p>{"$ " + new Intl.NumberFormat("de-DE").format(Total + subtotal)}</p></TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell  align="center" colSpan={6}><Button variant="contained" color="primary" onClick={() => history.push(`/cart`)}>Finalizar Compra </Button><Button variant="contained" color="primary" onClick={clear}> Cancelar Compra </Button></TableCell>
+                <Link to={`/Order`}><TableCell  align="center" colSpan={6}><Button variant="contained" color="primary" onClick={() => history.push(`/cart`)}>Generar orden de compra </Button><Button variant="contained" color="primary" onClick={clear}> Cancelar Compra </Button></TableCell></Link>
                 </TableRow>
              </TableContainer>
 }
