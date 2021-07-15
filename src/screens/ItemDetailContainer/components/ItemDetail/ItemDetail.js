@@ -20,7 +20,7 @@ const ItemDetail = (props) => {
   const [cantidad, setCantidad] = useState(0)
   const [click, setClick] = useState(false)
 
-  const { addItems, removeItems, clear} = useContext(CartContext);
+  const { addItems, clear} = useContext(CartContext);
 
   const onAdd = cantidad => {
     setCantidad(cantidad);
@@ -28,10 +28,10 @@ const ItemDetail = (props) => {
     addItems({ item: element, quantity: cantidad });
   };
 
-  const removeItem = () => {
-    setClick(!click);
-    removeItems(element.id);
-}
+//   const removeItem = () => {
+//     setClick(!click);
+//     removeItems(element.id);
+// }
 
   const cancelButton = () => {
     setClick(!click);
@@ -71,12 +71,13 @@ const ItemDetail = (props) => {
             <CardActions>
             {click ? (
                       <div >
-                        <Button className={classes.ButtonDetailStyle} onClick={() => history.push(`/cart`)} variant="contained" color="primary"> Finalizar Compra </Button>
-                        <Button className={classes.ButtonDetailStyle} onClick={() => removeItem()} variant="contained" color="default"> Remover Item </Button>
-                        <Button className={classes.ButtonDetailStyle} onClick={() => cancelButton()} variant="contained" color="secondary"> Cancelar Compra </Button>
+                        <Button className={classes.ButtonDetailStyle} onClick={() => history.push(`/Cart`)} variant="contained" color="primary"> Agregar  </Button>
+                        {/* {/* <Button className={classes.ButtonDetailStyle} onClick={() => removeItem()} variant="contained" color="default"> Remover Item </Button> */}
+                        <Button className={classes.ButtonDetailStyle} onClick={() => cancelButton()} variant="contained" color="secondary"> Cancelar </Button>
                       </div>
                     ) : (
-                <ItemCount stock={element.stock} initial={element.initial} cantidad={cantidad} addArticle={onAdd} />
+                <ItemCount initial={element.initial} cantidad={cantidad} addArticle={onAdd} />
+                // stock={element.stock} saqué este element.stock, para que me salte el error en la compra de productos sin stock
               )}
               <h5 className={classes.StyleDisponible}>
                 {`${element.stock} unidades en Stock`}

@@ -13,34 +13,23 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { Order } from "./orderContainer";
 
-const Impuesto = 0.21;
+// const Impuesto = 0.21;
 
 const CarritoTotal = ({ subtotal }) => {
     const classes = useStyles();
-    const history = useHistory();
-    const { clear } = useContext(CartContext);
-    const Total = Impuesto * subtotal;
+    // const history = useHistory();
+    // const { clear } = useContext(CartContext);
+    // const Total = Impuesto * subtotal;
     
 
     return <TableContainer className={classes.subtotalStyle}>
                 <TableRow> 
                     {/* <TableCell rowSpan={6} /> */}
-                    <TableCell align="left" colSpan={1}>Subtotal</TableCell>
-                    <TableCell align="right" colSpan={7}>{new Intl.NumberFormat("de-DE").format(subtotal)}</TableCell>
-                </TableRow>
-                <TableRow >
-                    {/* <TableCell align="left" colSpan={1}></TableCell> */}
-                    <TableCell align="left" colSpan={1}>{`${(Impuesto * 100)}%`} IVA</TableCell>
-                    <TableCell align="right" colSpan={7}><p>{"$ " + new Intl.NumberFormat("de-DE").format(Impuesto * subtotal)}</p></TableCell>
-                </TableRow>
-                <TableRow >
                     <TableCell align="left" colSpan={1}>Total</TableCell>
-                    <TableCell align="right" colSpan={7}><p>{"$ " + new Intl.NumberFormat("de-DE").format(Total + subtotal)}</p></TableCell>
-                </TableRow>
-                <TableRow>
-                <Link to={`/Order`}><TableCell  align="center" colSpan={6}><Button variant="contained" color="primary" onClick={() => history.push(`/cart`)}>Generar orden de compra </Button><Button variant="contained" color="primary" onClick={clear}> Cancelar Compra </Button></TableCell></Link>
+                    <TableCell align="right" colSpan={7}>${new Intl.NumberFormat("de-DE").format(subtotal)}</TableCell>
                 </TableRow>
              </TableContainer>
 }
@@ -50,6 +39,7 @@ const useStyles = makeStyles((theme) => CartStyle(theme));
 
 export const Cart = () => {
     const { items, subtotal } = useContext(CartContext);
+   
 
     return <div>
         {items.length === 0 ? (<CarritoVacio />) : (
@@ -58,14 +48,19 @@ export const Cart = () => {
                     <TablaCarrito items={items}/>
                     <CarritoTotal items={items} subtotal={subtotal} />
                 </TableContainer>
+                <Order totalPrice={subtotal}/>
+
             </>
         )}
     </div>
 }
 
+
+
 const CarritoVacio = () => {
     const classes = useStyles();
     const alCarrito = useHistory();
+
 
     return < >
             <Typography className={classes.CarritoVacioStyle} variant="h4">Tu carrito esta vacio</Typography>
@@ -82,8 +77,8 @@ const TablaCarrito = () => {
 
     return <>
             <Table className={classes.table} aria-label="spanning table">
-                <TableHead>
-                <TableRow>
+                <TableHead className={classes.table2}>
+                <TableRow >
                     <TableCell align="center">Id</TableCell>
                     <TableCell align="center">Foto</TableCell>
                     <TableCell align="center">Título</TableCell>
@@ -103,7 +98,7 @@ const TablaCarrito = () => {
                     <TableCell align="center">{item.item.title}</TableCell>
                     <TableCell align="center">{item.item.description}</TableCell>
                     <TableCell align="center">{item.quantity}</TableCell>
-                    <TableCell align="center">{item.item.price}</TableCell>
+                    <TableCell align="center">${item.item.price}</TableCell>
                     <TableCell align="center">${item.quantity * item.item.price}</TableCell>
                     <TableCell align="center"><Button  color="primary" onClick={e => removeItems(item.item.id)}><DeleteIcon style={{ color: green[500] }}/></Button></TableCell>
                     </TableRow>

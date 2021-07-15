@@ -20,8 +20,6 @@ export const CartStyle = theme => {
             alignItems: "center",
             flexDirection: "column",
 
-            // justifyContent: "center",
-
         },
         CarritoVacioStyle: {
             display: "flex",
@@ -29,6 +27,8 @@ export const CartStyle = theme => {
             justifyContent: "center",
             marginTop: "5em",          
  
+        },table2: {
+            overflowX: "scroll"
         }
     });
 }
