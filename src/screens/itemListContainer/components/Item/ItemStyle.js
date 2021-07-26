@@ -1,34 +1,52 @@
+import { commonBorder } from "../../../../components/orderContainer/orderContainerStyles";
+import { tituloStyle, textoStyle, botonTextStyle } from "../../../../components/Cart/CartStyle";
 
-export const ItemStyle = theme => {
-  return ({
+export const ItemStyle = (theme) => {
+  return {
     root: {
-      width: "20em",
-      height: "30em",
+      width: "17em",
+      height: "24em",
       margin: "1em",
-      border: "solid lightblue",
+      marginTop: "2em",
+      ...commonBorder,
+      ...tituloStyle,
+
     },
+
     title: {
-      fontSize: 12,
+      fontSize: "1.5em",
+      ...tituloStyle,
     },
-    countStyle : {
+
+    textStyle :{
+      fontSize: "1.2em",
+      ...textoStyle,
+    },
+
+    countStyle: {
       margin: "auto",
     },
+
     StyleDisponible: {
       marginTop: "0%",
       textAlign: "center",
       color: "grey",
     },
-    cover: {
-        width: "22em",
-        height: "20em",
-        marginLeft: "1em"
 
-    },
-    ButtonItemStyle : {
+    cover: {
+      width: "14em",
+      height: "12em",
       margin: "auto",
     },
-    styleLink : {
-      textDecorationLine: "none"
-      }
-  })
+
+    ButtonItemStyle: {
+      margin: "auto",
+      ...botonTextStyle
+
+    },
+
+    styleLink: {
+      textDecorationLine: "none",
+    },
+  };
 };

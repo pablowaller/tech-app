@@ -17,33 +17,35 @@ const ItemDetail = (props) => {
   const classes = useStyle();
   const history = useHistory();
   const { element } = props;
-  const [cantidad, setCantidad] = useState(0)
-  const [click, setClick] = useState(false)
+  const [cantidad, setCantidad] = useState(0);
+  const [click, setClick] = useState(false);
+  const { addItems, clear } = useContext(CartContext);
 
-  const { addItems, clear} = useContext(CartContext);
-
-  const onAdd = cantidad => {
+  // Agrega la cantidad de items deseados y posibles de acuerdo al stock.
+  const onAdd = (cantidad) => {
     setCantidad(cantidad);
     setClick(true);
     addItems({ item: element, quantity: cantidad });
   };
 
-//   const removeItem = () => {
-//     setClick(!click);
-//     removeItems(element.id);
-// }
-
+  // Cancela la operación de agregar items.
   const cancelButton = () => {
     setClick(!click);
     clear();
-  }
-  
+  };
+
   return (
-    <>
+    <section>
       <Card className={classes.root}>
+        <CardMedia
+          alt={element.alt}
+          className={classes.cover}
+          component="img"
+          image={element.pictureURL}
+        />
         <div className={classes.details}>
           <CardContent className={classes.content}>
-            <Typography variant="h3" className={classes.titulo}>
+            <Typography variant="h4" className={classes.titulo}>
               {element.title}
             </Typography>
             <Typography component="p" hidden>
@@ -53,45 +55,76 @@ const ItemDetail = (props) => {
               className={classes.precioDetalle}
               gutterBottom
               color="secondary"
-              variant="h4">
+              variant="h4"
+            >
               {"$ " + element.price}
             </Typography>
-            <Typography variant="h6" gutterBottom>
+            <Typography
+              className={classes.descripcionLarga}
+              variant="h6"
+              gutterBottom
+            >
               {element.descriptionLong}
             </Typography>
-            <Typography gutterBottom component="p">
+            <Typography
+              className={classes.caracteristicasStyle}
+              gutterBottom
+              component="p"
+            >
               {"Bateria: " + element.batery}
             </Typography>
-            <Typography gutterBottom component="p">
+            <Typography
+              className={classes.caracteristicasStyle}
+              gutterBottom
+              component="p"
+            >
               {"Compatibilidad: " + element.compatibility}
             </Typography>
-            <Typography gutterBottom component="p">
+            <Typography
+              className={classes.caracteristicasStyle}
+              gutterBottom
+              component="p"
+            >
               {"Conectividad: " + element.conectivity}
             </Typography>
             <CardActions>
-            {click ? (
-                      <div >
-                        <Button className={classes.ButtonDetailStyle} onClick={() => history.push(`/Cart`)} variant="contained" color="primary"> Agregar  </Button>
-                        {/* {/* <Button className={classes.ButtonDetailStyle} onClick={() => removeItem()} variant="contained" color="default"> Remover Item </Button> */}
-                        <Button className={classes.ButtonDetailStyle} onClick={() => cancelButton()} variant="contained" color="secondary"> Cancelar </Button>
-                      </div>
-                    ) : (
-                <ItemCount initial={element.initial} cantidad={cantidad} addArticle={onAdd} />
-                // stock={element.stock} saqué este element.stock, para que me salte el error en la compra de productos sin stock
+              {click ? (
+                <div className={classes.centrarBotones}>
+                  <Button
+                    className={classes.ButtonDetailStyle}
+                    onClick={() => history.push(`/Cart`)}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Agregar
+                  </Button>
+                  <Button
+                    className={classes.ButtonDetailStyleCancelar}
+                    onClick={() => cancelButton()}
+                    variant="contained"
+                    color="secondary"
+                  >
+                    Cancelar
+                  </Button>
+                </div>
+              ) : (
+                <>
+                  <ItemCount
+                    initial={element.initial}
+                    cantidad={cantidad}
+                    addArticle={onAdd}
+                  />
+                </>
               )}
-              <h5 className={classes.StyleDisponible}>
-                {`${element.stock} unidades en Stock`}
-              </h5>
             </CardActions>
+            <Typography
+              component="p"
+              className={classes.StyleDisponible}
+            >{`${element.stock} unidad/es en Stock`}</Typography>
           </CardContent>
         </div>
-        <CardMedia
-          className={classes.cover}
-          component="img"
-          image={element.pictureURL}
-        />
       </Card>
-    </>
+    </section>
   );
 };
 

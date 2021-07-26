@@ -1,40 +1,43 @@
-import React, {useState, useEffect } from "react"
-import ItemList from "../itemListContainer/components/ItemList/ItemList"
-import { useParams} from "react-router-dom"
-import { dataBase } from "../../firebase/firebase"
- 
-const ItemListContainer = props => {
+import React, { useState, useEffect } from "react";
+import ItemList from "../itemListContainer/components/ItemList/ItemList";
+import { makeStyles } from "@material-ui/core";
+import { useParams } from "react-router-dom";
+import { dataBase } from "../../firebase/firebase";
+import { Typography } from "@material-ui/core";
+import { itemListContainerStyle } from "./itemListContainerStyle";
 
-    const {category} = useParams();
-    const [articulos, setArticulos] = useState([]);
-    
-    useEffect(() => {
-        const itemCollection = dataBase.collection("items");
-        let filtroProductos;
-        if( category !== undefined && category !== null) {
-            filtroProductos = itemCollection.where("category", "==", category).get();           
-        }else {
-            filtroProductos = itemCollection.get();
-        }
+const useStyle = makeStyles((theme) => itemListContainerStyle(theme));
 
-        filtroProductos.then((response) => {
-            let filtrar = [];
-            response.forEach ((doc) => {
-                filtrar.push({id: doc.id, ...doc.data()});
-            });
-            if(filtrar.size === 0){
-                console.log("vacio");
-        }
-        setArticulos(filtrar);
-    })
-},[category]);
+export const ItemListContainer = (props) => {
+  const { category } = useParams();
+  const [articulos, setArticulos] = useState([]);
+  const classes = useStyle();
 
 
-    return ( 
-        <> 
-            <ItemList articulos={articulos} />    
-        </>
-    );
-}
- 
-export default ItemListContainer;
+  useEffect(() => {
+    const itemCollection = dataBase.collection("items");
+    let filtroProductos;
+    if (category !== undefined && category !== null) {
+      filtroProductos = itemCollection.where("category", "==", category).get();
+    } else {
+      filtroProductos = itemCollection.get();
+    }
+
+    filtroProductos.then((response) => {
+      let filtrar = [];
+      response.forEach((doc) => {
+        filtrar.push({ id: doc.id, ...doc.data() });
+      });
+      if (filtrar.size === 0) {
+      }
+      setArticulos(filtrar);
+    });
+  }, [category]);
+
+  return (
+    <>
+      <Typography variant="h4" className={classes.tituloCards}>Listado de productos</Typography>
+      <ItemList articulos={articulos} />
+    </>
+  );
+};
