@@ -21,7 +21,7 @@ export const Routes = () => {
           <Route exact path="/Cart">
             <Cart />
           </Route>
-          <Route path="/tech-app/*" component={NotFoundComponent}>
+          <Route path="/" component={NotFoundComponent}>
               <NotFoundComponent />
           </Route>
         </Switch>
