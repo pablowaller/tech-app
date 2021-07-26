@@ -26,7 +26,13 @@ Para finalizar, nos encontraremos con una página de Error 404 en caso de que la
 <br />
 <br />
 
-### **Podes encontrar el repositorio acá:**
+### **Podes encontrar la página deployada:**
+[Click!](https://krizalid23.github.io/tech-app)
+
+<br />
+<br />
+
+### **Mi repositorio de Github dando click acá:**
 [Click!](https://github.com/krizalid23/tech-app.git)
 
 <br />

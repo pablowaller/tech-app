@@ -70,7 +70,7 @@ const CarritoVacio = () => {
       <div>
         <Button
           className={classes.cartAtras}
-          onClick={() => alCarrito.push(`/`)}
+          onClick={() => alCarrito.push(`/tech-app`)}
           variant="contained"
           color="primary"
         >
